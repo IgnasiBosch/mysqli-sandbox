@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Union SQLi</h1>
+    <p>
+    Union SQLi is one of the In-Band injections, which take advantage of a vulnerability in the query that allows
+    to modify the information retrieved.
+    </p>
+    <h4>Search Apps</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post">
+                <input name="name" style="width: 100%" value="{{ search }}" placeholder="e.g. Namfix">
+            </form>
+            {% if result %}
+                <table class="table" style="margin-top: 50px">
+                    <thead>
+                    <tr>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Version</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in result %}
+                        <tr>
+                            <th scope="row" class="isbn">{{ item["isbn"] }}</th>
+                            <td class="name">{{ item["name"] }}</td>
+                            <td class="version">{{ item["version"] }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% elif search %}
+                <div class="alert alert-warning" role="alert" style="margin-top: 20px">
+                    No results
+                </div>
+            {% else %}
+                <div class="alert alert-info" role="alert" style="margin-top: 20px">
+                    Use the search field to try to exploit the SQLi vulnerability
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

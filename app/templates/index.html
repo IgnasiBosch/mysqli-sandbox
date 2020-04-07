@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1>Index</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="{{ url_for("get_union_sqli") }}">Union SQLi</a>
+        </div>
+    </div>
+{% endblock %}

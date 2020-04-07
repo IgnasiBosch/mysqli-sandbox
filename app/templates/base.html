@@ -1,0 +1,24 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    Security Sandbox
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <a href="{{ url_for("main") }}">index</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="alert alert-danger" role="alert">
+            This is a Sandbox environment in order to test SQL injections. <strong>NEVER</strong> use any of this code
+            in production, seriously.
+        </div>
+
+        {% block app_content %}{% endblock %}
+    </div>
+{% endblock %}
