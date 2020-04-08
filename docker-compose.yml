@@ -19,6 +19,7 @@ services:
       MYSQL_DATABASE: 'dummy_db'
       MYSQL_ROOT_PASSWORD: 'password'
     volumes:
+      - ./data/my.cnf:/etc/alternatives/my.cnf
       - ./data/dump_apps.sql:/docker-entrypoint-initdb.d/1_dump_apps.sql
       - ./data/dump_customers.sql:/docker-entrypoint-initdb.d/2_dump_customers.sql
       - ./data/dump_users.sql:/docker-entrypoint-initdb.d/3_dump_users.sql
